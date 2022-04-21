@@ -38,24 +38,26 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
        window.alert("Not a valid value");
    } else {
        
-       let pilotStatusUpdate = document.getElementById('pilotStatus').innerHTML;
-       let copilotStatusUpdate = document.getElementById('copilotStatus').innerHTML;
-       let fuelStatusUpdate = document.getElementById('fuelStatus').innerHTML;
-       let cargoStatusUpdate = document.getElementById('cargoStatus').innerHTML;
+       let pilotStatusUpdate = document.getElementById('pilotStatus');
+       let copilotStatusUpdate = document.getElementById('copilotStatus');
+       let fuelStatusUpdate = document.getElementById('fuelStatus');
+       let cargoStatusUpdate = document.getElementById('cargoStatus');
        
        let status = document.getElementById('launchStatus');
        let list = document.getElementById("faultyItems");
        list.style.visibility = "visible";
 
-       pilotStatusUpdate = `Pilot ${pilot} Ready`;
-       copilotStatusUpdate = `Copilot ${copilot} is ready for launch.`
+       pilotStatusUpdate.innerHTML = `Pilot ${pilot} Ready`;
+       copilotStatusUpdate.innerHTML = `Copilot ${copilot} is ready for launch.`
        if (fuelLevel < 10000) {
-            fuelStatusUpdate = "There is not enough fuel for the journey.";
+            fuelStatusUpdate.innerHTML = "There is not enough fuel for the journey.";
             status.innerHTML = "Shuttle not ready for launch";
             status.style.color = "red";
+         
         } else {
             status.innerHTML = "Shuttle is ready for launch";
             status.style.color = "green";
+         
         }
 
    

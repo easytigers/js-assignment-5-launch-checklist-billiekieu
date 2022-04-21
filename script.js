@@ -18,7 +18,7 @@ window.addEventListener("load", function() {
         addDestinationInfo(document,planet.name,planet.diameter,planet.star,planet.distance,planet.moons,planet.image);
     })
     
-    
+    let list = document.getElementById("faultyItems");
     let form = document.querySelector("form");
  
     form.addEventListener("submit", function(event) {
