@@ -19,13 +19,47 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 // function validates input to determine its type
 function validateInput(testInput){
-        
+    let numberInput = Number(testInput);
+    if (testInput === "") {
+        return "Empty";
+    } else if (isNaN(numberInput)) { 
+        return "Not a Number";
+    } else if (isNaN(numberInput) === false); {
+        return "Is a Number";
+    }
 }
 
 
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+   if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
+       window.alert("All fields are required");
+   } else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
+       window.alert("Not a valid value");
+   } else {
+       
+       let pilotStatusUpdate = document.getElementById('pilotStatus').innerHTML;
+       let copilotStatusUpdate = document.getElementById('copilotStatus').innerHTML;
+       let fuelStatusUpdate = document.getElementById('fuelStatus').innerHTML;
+       let cargoStatusUpdate = document.getElementById('cargoStatus').innerHTML;
+       
+       let status = document.getElementById('launchStatus');
+       document.style.visibility = "visible";
+
+       pilotStatusUpdate = `Pilot ${pilot.value} Ready`;
+       copilotStatusUpdate = `Copilot ${copilot.value} is ready for launch.`
+       if (fuelLevel < 10000) {
+            fuelStatusUpdate = "There is not enough fuel for the journey.";
+            status.innerHTML = "Shuttle not ready for launch";
+            status.style.color = "red";
+        } else {
+            status.innerHTML = "Shuttle is ready for launch";
+            status.style.color = "green";
+        }
+
    
+       
+   }
 }
 
 async function myFetch() {
