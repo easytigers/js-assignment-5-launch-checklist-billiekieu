@@ -54,6 +54,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             status.innerHTML = "Shuttle not ready for launch";
             status.style.color = "red";
          
+        } else if (cargoLevel > 10000) {
+            cargoStatusUpdate.innerHTML = "There is too much mass for the shuttle to take off.";
+            status.innerHTML = "Shuttle not ready for launch";
+            status.style.color = "red";
         } else {
             status.innerHTML = "Shuttle is ready for launch";
             status.style.color = "green";
